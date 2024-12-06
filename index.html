@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Namanhdev</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white">
+  <!-- Fixed Menu -->
+  <nav class="fixed inset-x-0 top-0 bg-gray-800 text-white p-4 z-10">
+    <div class="flex justify-center items-center">
+      <h1 class="text-4xl font-bold">Nam Anh Dev</h1>
+    </div>
+    <div class="text-center">
+      <p class="text-xl mt-2">Fullstack Developer | Freelancer</p>
+    </div>
+    <ul class="flex justify-center items-center mt-4">
+      <li class="mr-4">
+        <a href="#" onclick="showSection('introduction')" class="hover:text-blue-600">Giới thiệu</a>
+      </li>
+      <li class="mr-4">
+        <a href="#" onclick="showSection('portfolio')" class="hover:text-blue-600">Dự án</a>
+      </li>
+      <li class="mr-4">
+        <a href="#" onclick="showSection('contact')" class="hover:text-blue-600">Liên hệ</a>
+      </li>
+      <li class="mr-4">
+        <a href="#" onclick="showSection('convert-url')" class="hover:text-blue-600">Convert URL</a>
+      </li>
+      <li class="mr-4">
+        <a href="#" onclick="showSection('random-text')" class="hover:text-blue-600">Random text</a>
+      </li>
+      <li class="mr-4">
+        <a href="#" onclick="showSection('uppercase-text')" class="hover:text-blue-600">Chữ viết hoa</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Add margin-top to avoid being hidden by the fixed nav -->
+  <div class="pt-40"></div>
+
+  <!-- Content Sections -->
+  <div id="introduction" class="section">
+    <section class="p-8">
+      <h2 class="text-3xl font-semibold fade-in">Giới thiệu</h2>
+      <p class="mt-4 text-lg fade-in">
+        Xin chào! Tôi là Nam Anh, một lập trình viên đam mê xây dựng các dự án
+        web.
+      </p>
+    </section>
+  </div>
+
+  <div id="portfolio" class="section hidden">
+    <section class="p-8">
+      <h2 class="text-3xl font-semibold fade-in">Dự án</h2>
+      <p class="mt-4 text-lg fade-in">
+        Danh sách các dự án đã thực hiện sẽ hiển thị tại đây.
+      </p>
+    </section>
+  </div>
+
+  <div id="contact" class="section hidden">
+    <section class="p-8">
+      <h2 class="text-3xl font-semibold fade-in">Liên hệ</h2>
+      <p class="mt-4 text-lg fade-in">
+        Bạn có thể liên hệ với tôi qua các thông tin sau: ...
+      </p>
+    </section>
+  </div>
+
+  <!-- Convert URL Section -->
+  <div id="convert-url" class="section hidden flex justify-center items-center">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-md w-full fade-in">
+      <h1 class="text-3xl font-semibold text-center mb-6">
+        Text to URL Converter
+      </h1>
+      <div class="flex items-center">
+        <input type="text" id="inputText" class="text-black w-full p-2 rounded-lg" placeholder="Nhập chuỗi ký tự" />
+        <button id="pasteButton" class="ml-2 px-4 py-2 bg-blue-600 text-white rounded-lg">
+          Dán
+        </button>
+      </div>
+      <button id="convertButton" class="mt-4 w-full px-4 py-2 bg-green-600 text-white rounded-lg">
+        Chuyển đổi
+      </button>
+      <p class="mt-4 text-center">
+        Kết quả URL:
+        <span id="outputUrl" class="font-bold text-blue-500"></span>
+      </p>
+      <button id="copyButton" class="mt-2 w-full px-4 py-2 bg-blue-600 text-white rounded-lg">
+        Sao chép
+      </button>
+    </div>
+  </div>
+
+  <!-- Random Text Section -->
+  <div id="random-text" class="section hidden flex flex-col items-center justify-center">
+
+    <!-- Tab Links -->
+    <div class="flex space-x-4 mb-4">
+      <button id="tabRandomName" class="tab-link bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Random
+        Name</button>
+      <button id="tabRandom" class="tab-link bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Random</button>
+      <button id="tabRandomText" class="tab-link bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Random
+        Text</button>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="contentRandomName" class="tab-content">
+      <div class="flex space-x-4 mb-4">
+        <!-- Card for Vietnamese Names -->
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center">
+          <h2 class="text-xl font-bold text-red-500 mb-4">Tạo tên tiếng Việt</h2>
+          <input type="number" id="vietnameseNameCount" placeholder="1" min="1"
+            class="text-red-500 mb-2 border rounded px-2 py-1">
+          <div class="flex space-x-2">
+            <button id="generateVietnameseName"
+              class="bg-green-500 text-white hover:bg-red-500 rounded px-4 py-2 mb-2">Tạo tên</button>
+            <button id="clearVietnameseNames"
+              class="bg-gray-500 text-white hover:bg-red-500 rounded px-4 py-2 mb-2">Clear</button>
+          </div>
+          <div id="randomNameOutput" class="text-lg text-red-500 fade-in"></div>
+        </div>
+        <!-- Card for English Names -->
+        <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center">
+          <h2 class="text-xl font-bold text-blue-500 mb-4">Tạo tên tiếng Anh</h2>
+          <input type="number" id="englishNameCount" placeholder="1" min="1"
+            class="text-blue-500 mb-2 border rounded px-2 py-1">
+          <div class="flex space-x-2">
+            <button id="generateEnglishName" class="bg-green-500 text-white hover:bg-red-500 rounded px-4 py-2 mb-2">Tạo
+              tên</button>
+            <button id="clearEnglishNames"
+              class="bg-gray-500 text-white hover:bg-red-500 rounded px-4 py-2 mb-2">Clear</button>
+          </div>
+          <div id="randomNameOutputEn" class="text-lg text-blue-500 fade-in"></div>
+        </div>
+      </div>
+    </div>
+    <div id="contentRandom" class="tab-content hidden">
+      <!-- Card for Custom Names -->
+      <div class="bg-white shadow-md rounded-lg p-6 flex flex-col items-center mt-4">
+        <h2 class="text-xl font-bold text-purple-500 mb-4">Random Name Tùy Chọn</h2>
+        <textarea id="customNamesInput" placeholder="Nhập tên, mỗi tên trên một dòng..."
+          class="border rounded px-2 py-1 mb-2 w-64 h-64 text-black"></textarea>
+        <input type="number" id="customNameCount" placeholder="1" min="1"
+          class="mb-2 border rounded px-2 py-1 text-black">
+        <button id="generateCustomNames" class="bg-green-500 text-white hover:bg-red-500 rounded px-4 py-2 mb-2">Tạo tên
+          ngẫu nhiên</button>
+        <div id="randomCustomNameOutput" class="text-lg text-purple-500 fade-in"></div>
+      </div>
+    </div>
+    <div id="contentRandomText" class="tab-content hidden">
+      <div class="p-6 flex flex-col items-center">
+        <button id="generateRandomText"
+          class="bg-green-500 text-white hover:bg-red-500 rounded px-4 py-2 items-center">Tạo văn bản ngẫu
+          nhiên</button>
+        <div id="randomTextOutput" class="mt-4 text-lg fade-in"></div>
+        <button id="copyRandomText" class="mt-2 bg-blue-500 text-white hover:bg-blue-700 rounded px-4 py-2">Copy</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Uppercase Text Section -->
+  <div id="uppercase-text" class="section hidden flex flex-col items-center justify-center">
+    <h2 class="text-3xl font-semibold mb-4">Chuyển đổi thành chữ viết hoa</h2>
+    <textarea id="uppercaseInput" placeholder="Nhập văn bản ở đây..."
+      class="border rounded px-2 py-1 mb-2 w-64 h-32 text-black"></textarea>
+    <button id="convertUppercaseButton" class="bg-green-500 text-white hover:bg-red-500 rounded px-4 py-2 mb-2">Chuyển
+      đổi</button>
+    <p class="mt-4 text-lg">Kết quả: <span id="uppercaseOutput" class="font-bold text-blue-500"></span></p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="p-6 bg-gray-800 text-center fixed bottom-0 w-full">
+    <p>© 2024 Nam Anh Dev</p>
+  </footer>
+
+  <script>
+    // Add event listener for the uppercase conversion button
+    document.getElementById('convertUppercaseButton').addEventListener('click', function () {
+      const inputText = document.getElementById('uppercaseInput').value;
+      const result = inputText.toUpperCase();
+      document.getElementById('uppercaseOutput').textContent = result;
+    });
+    document.querySelectorAll('.tab-link').forEach(function (element) {
+      element.addEventListener('click', function () {
+        // Remove active from all tabs
+        document.querySelectorAll('.tab-link').forEach(function (tab) {
+          tab.classList.remove('bg-blue-700');
+          tab.classList.add('bg-blue-500');
+        });
+        // Add active to clicked tab
+        element.classList.remove('bg-blue-500');
+        element.classList.add('bg-blue-700');
+
+        // Hide all contents
+        document.querySelectorAll('.tab-content').forEach(function (content) {
+          content.classList.add('hidden');
+        });
+        // Show content corresponding to clicked tab
+        const contentId = 'content' + element.id.replace('tab', '');
+        document.getElementById(contentId).classList.remove('hidden');
+      });
+    });
+
+    // Set default active tab and content
+    document.getElementById('tabRandomName').click();
+
+    const vietnameseLastNames = ["Nguyễn", "Trần", "Lê", "Phạm", "Huỳnh", "Vũ", "Đặng", "Bùi", "Ngô", "Lý"];
+    const vietnameseMiddleNames = ["Thị", "Văn", "Quang", "Minh", "Ngọc", "Hữu", "Thế", "Bảo", "Tuấn", "Đức"];
+    const vietnameseFirstNames = ["An", "Bình", "Cường", "Dũng", "Giang", "Hà", "Kiên", "Lan", "Mai", "Nam"];
+
+    const englishLastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis",
+      "Rodriguez", "Martinez"
+    ];
+    const englishFirstNames = ["John", "Alice", "Michael", "Sarah", "David", "Emily", "James", "Jessica"];
+
+    const randomTexts = [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    ];
+
+    document.getElementById('generateVietnameseName').addEventListener('click', function () {
+      const count = parseInt(document.getElementById('vietnameseNameCount').value) || 1;
+      let names = [];
+      for (let i = 0; i < count; i++) {
+        const lastName = vietnameseLastNames[Math.floor(Math.random() * vietnameseLastNames.length)];
+        const middleName = vietnameseMiddleNames[Math.floor(Math.random() * vietnameseMiddleNames.length)];
+        const firstName = vietnameseFirstNames[Math.floor(Math.random() * vietnameseFirstNames.length)];
+        names.push(`${lastName} ${middleName} ${firstName}`);
+      }
+      document.getElementById('randomNameOutput').textContent = `Tên tiếng Việt: ${names.join(', ')}`;
+    });
+
+    document.getElementById('generateEnglishName').addEventListener('click', function () {
+      const count = parseInt(document.getElementById('englishNameCount').value) || 1;
+      let names = [];
+      for (let i = 0; i < count; i++) {
+        const lastName = englishLastNames[Math.floor(Math.random() * englishLastNames.length)];
+        const firstName = englishFirstNames[Math.floor(Math.random() * englishFirstNames.length)];
+        names.push(`${firstName} ${lastName}`);
+      }
+      document.getElementById('randomNameOutputEn').textContent = `Tên tiếng Anh: ${names.join(', ')}`;
+    });
+
+    document.getElementById('clearVietnameseNames').addEventListener('click', function () {
+      document.getElementById('vietnameseNameCount').value = '';
+      document.getElementById('randomNameOutput').textContent = '';
+    });
+
+    document.getElementById('clearEnglishNames').addEventListener('click', function () {
+      document.getElementById('englishNameCount').value = '';
+      document.getElementById('randomNameOutputEn').textContent = '';
+    });
+
+    document.getElementById('generateCustomNames').addEventListener('click', function () {
+      const customNamesInput = document.getElementById('customNamesInput').value.trim();
+      const customNames = customNamesInput.split('\n').filter(name => name);
+      const count = parseInt(document.getElementById('customNameCount').value) || 1;
+      let names = [];
+      for (let i = 0; i < count; i++) {
+        const randomIndex = Math.floor(Math.random() * customNames.length);
+        names.push(customNames[randomIndex]);
+      }
+      document.getElementById('randomCustomNameOutput').textContent = `Tên ngẫu nhiên: ${names.join(', ')}`;
+    });
+    document.getElementById('generateRandomText').addEventListener('click', function () {
+      const randomText = randomTexts[Math.floor(Math.random() * randomTexts.length)];
+      document.getElementById('randomTextOutput').textContent = randomText;
+    });
+    document
+      .getElementById("copyRandomText")
+      .addEventListener("click", function () {
+        const outputUrl = document.getElementById("randomTextOutput").textContent;
+        navigator.clipboard.writeText(outputUrl);
+      });
+
+    // Ẩn tất cả các section và chỉ hiển thị section được chọn
+    function showSection(sectionId) {
+      document.querySelectorAll(".section").forEach((section) => {
+        section.classList.add("hidden");
+      });
+
+      document.getElementById(sectionId).classList.remove("hidden");
+    }
+
+    // Hiển thị mục giới thiệu mặc định khi tải trang
+    document.addEventListener("DOMContentLoaded", function () {
+      showSection("introduction");
+    });
+
+    // Convert Text to URL functionality
+    document
+      .getElementById("convertButton")
+      .addEventListener("click", function () {
+        const inputText = document.getElementById("inputText").value;
+        const convertToUrl = (text) => {
+          return text
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9\s]/g, "")
+            .trim()
+            .replace(/\s+/g, "-");
+        };
+
+        const result = convertToUrl(inputText);
+        document.getElementById("outputUrl").textContent = result;
+      });
+
+    document
+      .getElementById("pasteButton")
+      .addEventListener("click", function () {
+        navigator.clipboard.readText().then((text) => {
+          document.getElementById("inputText").value = text;
+        });
+      });
+
+    document
+      .getElementById("copyButton")
+      .addEventListener("click", function () {
+        const outputUrl = document.getElementById("outputUrl").textContent;
+        navigator.clipboard.writeText(outputUrl);
+      });
+  </script>
+</body>
+
+</html>
